@@ -13,7 +13,7 @@ export class Logger {
   constructor(context: string) {
     this.context = context;
   }
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   private formatMessage(level: string, message: string, data?: any) {
     const timestamp = new Date().toISOString();
     const prefix = `${timestamp} ${this.context}:`;
@@ -43,7 +43,7 @@ export class Logger {
     }
     return logParts.join(" ");
   }
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   info(message: string, data?: any) {
     const formattedData = this.formatMessage("info", message, data);
     console.log(
@@ -70,7 +70,7 @@ export class Logger {
         this.formatOutput(formattedData)
     );
   }
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   warn(message: string, data?: any) {
     const formattedData = this.formatMessage("warn", message, data);
     console.warn(
@@ -79,7 +79,7 @@ export class Logger {
         this.formatOutput(formattedData)
     );
   }
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+  
   debug(message: string, data?: any) {
     if (process.env.NODE_ENV === "development") {
       const formattedData = this.formatMessage("debug", message, data);

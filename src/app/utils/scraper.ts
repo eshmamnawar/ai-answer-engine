@@ -34,7 +34,7 @@ export async function scrapeUrl(url:string) {
     logger.info (`Cache miss - proceeding with fresh scrape for: ${url}`);
 
     const response = await axios.get(url);
-    const $ = cheerio.load(response.data); 
+    const $ = cheerio.load(response.data);
     // Remove scripts tags, style tags, and comments
     $("scripts").remove();
     $("style").remove();
