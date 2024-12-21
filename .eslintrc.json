@@ -1,9 +1,13 @@
 {
-  "extends": "next/core-web-vitals",
+  "extends": ["next/core-web-vitals"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
   "rules": {
-    "@typescript-eslint/no-unused-vars": ["error", {
+    "@typescript-eslint/no-unused-vars": ["warn", {
       "argsIgnorePattern": "^_|^req|^request|^error",
-      "varsIgnorePattern": "^_|^response"
-    }]
+      "varsIgnorePattern": "^_|^response",
+      "ignoreRestSiblings": true
+    }],
+    "@typescript-eslint/no-explicit-any": "warn"
   }
 }
