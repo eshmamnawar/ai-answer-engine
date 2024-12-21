@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getGroqResponse } from "@/app/utils/groqClient";
 import { scrapeUrl, urlPattern } from "../../utils/scraper";
 
+// For the req parameter:
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function POST(req: Request) {
   try {
@@ -41,8 +42,12 @@ export async function POST(req: Request) {
     const response = await getGroqResponse(llmMessages);
 
     return NextResponse.json({ message: response });
-  }catch (err) {
-    console.error("Error processing chat request:", err);
-    return NextResponse.json({ message: "Error" }, { status: 500 });
-  }
+  // And update your catch block to use the error:
+  } catch (error: unknown) {
+  console.error("Error processing request:", error);
+  return NextResponse.json(
+      { message: "An error occurred" }, 
+      { status: 500 }
+  );
+}
 }
