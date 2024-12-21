@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { getGroqResponse } from "@/app/utils/groqClient";
 import { scrapeUrl, urlPattern } from "../../utils/scraper";
 
-export async function POST(request: Request) {  // Changed 'req' to 'request' since we use it
+export async function POST(request: Request) {  
   try {
     const { message, messages } = await request.json();
     console.log("message received:", message);
@@ -39,8 +39,8 @@ export async function POST(request: Request) {  // Changed 'req' to 'request' si
     const response = await getGroqResponse(llmMessages);
 
     return NextResponse.json({ message: response });
-  } catch (error: unknown) {  // Added type annotation and use error in console.log
-    console.error("Error processing request:", error);
+  } catch ( _err) {  // Added type annotation and use error in console.log
+    console.error("Error processing request:", _err);
     return NextResponse.json({ message: "Error" });
   }
 }
