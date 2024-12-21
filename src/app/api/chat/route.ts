@@ -2,8 +2,7 @@ import { NextResponse } from "next/server";
 import { getGroqResponse } from "@/app/utils/groqClient";
 import { scrapeUrl, urlPattern } from "../../utils/scraper";
 
-// For the req parameter:
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+
 export async function POST(req: Request) {
   try {
     const { message, messages } = await req.json();
